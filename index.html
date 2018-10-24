@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Todolist API | Vue js</title>
+    <style media="screen">
+    .completed {
+      text-decoration: line-through;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Todolist Vue js</h1>
+
+    <div id="app">
+      <textarea v-model="newTodo" @keyup.enter="submitTodo"></textarea>
+      <ul>
+        <li v-if="!todos.length">Tidak ada tugas hari ini</li>
+        <li v-for="(todo, i) in todos">
+          <span :class="{completed:todo.done}">{{ todo.text }}</span>
+          <button type="button" @click="removeTodo(i)">X</button>
+          <button type="button" @click="doneTodo(i)">V</button>
+        </li>
+      </ul>
+    </div>
+
+    <script src="vue.js" charset="utf-8"></script>
+    <script src="index.js" charset="utf-8"></script>
+  </body>
+</html>
