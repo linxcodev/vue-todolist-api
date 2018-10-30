@@ -17,14 +17,15 @@
       <ul>
         <li v-if="!todos.length">Tidak ada tugas hari ini</li>
         <li v-for="(todo, i) in todos">
-          <span :class="{completed:todo.done}">{{ todo.text }}</span>
+          <span :class="{completed: todo.done}">{{ todo.text }}</span>
           <button type="button" @click="removeTodo(i)">X</button>
           <button type="button" @click="doneTodo(i)">V</button>
         </li>
       </ul>
     </div>
 
-    <script src="vue.js" charset="utf-8"></script>
-    <script src="index.js" charset="utf-8"></script>
+    <script src="js/vue.js" charset="utf-8"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/index.js" charset="utf-8"></script>
   </body>
 </html>
