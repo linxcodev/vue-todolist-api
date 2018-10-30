@@ -29,3 +29,6 @@ vim api/index.php || mysqli_connect()
 ![alt](img/2.png)
 ### Hapus (x), Selesai task (v)
 ![alt](img/3.png)
+
+## Licence
+MIT
