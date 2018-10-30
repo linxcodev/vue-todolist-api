@@ -24,12 +24,23 @@ new Vue({
       }
       this.newTodo = ''
     },
-    removeTodo: function(i){
-      this.todos.splice(i, 1)
+    removeTodo: function(i, id){
+      axios({
+        method:'DELETE',
+        url:'api/index.php?id=' + id
+      })
+        .then((response) => {
+           this.todos.splice(i, 1)
+        });
       // localStorage.setItem('todos', JSON.stringify(this.todos))
     },
-    doneTodo: function(i) {
-      this.todos[i].done = !this.todos[i].done
+    doneTodo: function(i, todo) {
+      todo.done = !todo.done
+      
+      axios({
+        method:'PATCH',
+        url:'api/index.php?id=' + todo.id + '&done=' + todo.done
+      })
       // localStorage.setItem('todos', JSON.stringify(this.todos))
     }
   },

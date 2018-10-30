@@ -13,6 +13,7 @@ switch ($request) {
       echo json_encode(mysqli_fetch_all($result, MYSQLI_ASSOC));
     }
     break;
+
   case 'POST':
     $ct = json_decode(file_get_contents('php://input'), true);
     $text = $ct['text'];
@@ -30,11 +31,20 @@ switch ($request) {
       print_r(json_encode(['message' => 'eror insert!!!']));
     }
     break;
+
   case 'DELETE':
-    # code...
+    $id = $_GET['id'];
+
+    $sql = "DELETE FROM todo WHERE id = $id";
+    $result = mysqli_query($con, $sql);
     break;
+    
   case 'PATCH':
-    # code...
+    $id = $_GET['id'];
+    $done = $_GET['done'];
+
+    $sql = "UPDATE todo SET done=$done WHERE id = $id";
+    $result = mysqli_query($con, $sql);
     break;
 
   default:
